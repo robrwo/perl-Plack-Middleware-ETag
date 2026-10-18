@@ -4,6 +4,8 @@ Revision history for Perl extension {{ $dist->name }}:
   [Security]
   - The inode is no longer used for generated the ETag by default. (CVE-2026-111946)
 
+  - Bump minimum version of Digest::SHA to 5.96.
+
   [Incompatabilities]
   - Minimum version is Perl v5.14.
 

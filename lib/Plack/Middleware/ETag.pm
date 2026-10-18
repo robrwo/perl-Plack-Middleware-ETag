@@ -5,7 +5,7 @@ package Plack::Middleware::ETag;
 use v5.14;
 use warnings;
 
-use Digest::SHA;
+use Digest::SHA 5.96;
 use Plack::Util;
 use Plack::Util::Accessor
     qw( file_etag cache_control check_last_modified_header);

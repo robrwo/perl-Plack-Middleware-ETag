@@ -31,6 +31,7 @@ Changes for version 0.06 (2026-10-18)
 
 - Security
     - The inode is no longer used for generated the ETag by default. (CVE-2026-111946)
+    - Bump minimum version of Digest::SHA to 5.96.
 - Incompatabilities
     - Minimum version is Perl v5.14.
 - Documentation
@@ -49,7 +50,7 @@ See the `Changes` file for more details.
 
 This module lists the following modules as runtime dependencies:
 
-- [Digest::SHA](https://metacpan.org/pod/Digest%3A%3ASHA)
+- [Digest::SHA](https://metacpan.org/pod/Digest%3A%3ASHA) version 5.96 or later
 - [Plack::Middleware](https://metacpan.org/pod/Plack%3A%3AMiddleware)
 - [Plack::Util](https://metacpan.org/pod/Plack%3A%3AUtil)
 - [Plack::Util::Accessor](https://metacpan.org/pod/Plack%3A%3AUtil%3A%3AAccessor)
