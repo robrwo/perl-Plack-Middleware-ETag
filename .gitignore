@@ -1,3 +1,6 @@
+Plack-Middleware-ETag-*/
+Plack-Middleware-ETag-*.tar.gz
+Plack-Middleware-ETag-*.sigstore.json
 cover_db
 META.yml
 Makefile

@@ -1,4 +1,22 @@
-Revision history for Perl extension Plack::Middleware::ETag
+Revision history for Perl extension {{ $dist->name }}:
+
+{{$NEXT}}
+  [Incompatabilities]
+  - Minimum version is Perl v5.14.
+
+  [Documentation]
+  - Updated with new maintainer.
+
+  - Added security policy.
+
+  [Toolchain]
+  - Static install.
+
+  - Distributions signed with sigstore.
+
+  - Note that the git repository and bugtracker have moved.
+
+  - Updated Dist::Zilla configuration for RRWO's preferences.
 
 0.05    Tue Jul 14 2015
         - Update to correct version

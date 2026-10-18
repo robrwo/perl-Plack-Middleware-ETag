@@ -2,14 +2,17 @@ package Plack::Middleware::ETag;
 
 # ABSTRACT: Adds automatically an ETag header.
 
-use strict;
+use v5.14;
 use warnings;
+
 use Digest::SHA;
 use Plack::Util;
 use Plack::Util::Accessor
     qw( file_etag cache_control check_last_modified_header);
 
 use parent qw/Plack::Middleware/;
+
+our $VERSION = '0.06';
 
 sub call {
     my $self = shift;
@@ -76,6 +79,12 @@ sub _set_cache_control {
 1;
 __END__
 
+=begin :prelude
+
+=for stopwords Rothenberg revalidate
+
+=end :prelude
+
 =head1 SYNOPSIS
 
   use Plack::Builder;
@@ -95,17 +104,13 @@ Plack::Middleware::ETag adds automatically an ETag header. You may want to use i
     sub {['200', ['Content-Type' => 'text/html'}, ['hello world']]};
   };
 
-=head2 CONFIGURATION
-
-=over 4
-
-=item file_etag
+=option file_etag
 
 If the content is a file handle, the ETag will be set using the inode, modified time and the file size. You can select which attributes of the file will be used to set the ETag:
 
     enable "Plack::Middleware::ETag", file_etag => [qw/size/];
 
-=item cache_control
+=option cache_control
 
 It's possible to add 'Cache-Control' header.
 
@@ -117,8 +122,26 @@ Will add "Cache-Control: must-revalidate" to the headers.
 
 Will add "Cache-Control: must-revalidate, max-age=3600" to the headers.
 
-=item check_last_modified_header
+=option check_last_modified_header
 
 Will not add an ETag if there is already a Last-Modified header.
 
-=back
+=head1 append:AUTHOR
+
+The current maintainer is Robert Rothenberg <perl@rhizomnic.com>.
+
+=head1 prepend:SUPPORT
+
+Only the latest version of this module will be supported.
+
+This module requires Perl v5.14 or later.
+Future releases may only support Perl versions released in the last ten (10) years.
+
+=head1 append:SUPPORT
+
+=head2 Reporting Security Vulnerabilities
+
+If the bug you are reporting has security implications which make it inappropriate to send to a public issue tracker,
+then see F<SECURITY.md> for instructions how to report security vulnerabilities.
+
+=cut
