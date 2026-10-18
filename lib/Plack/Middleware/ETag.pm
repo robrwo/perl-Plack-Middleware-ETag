@@ -10,7 +10,7 @@ use Plack::Util;
 use Plack::Util::Accessor
     qw( file_etag cache_control check_last_modified_header);
 
-use parent qw/Plack::Middleware/;
+use parent qw( Plack::Middleware );
 
 our $VERSION = '0.07';
 
