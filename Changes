@@ -1,6 +1,9 @@
 Revision history for Perl extension {{ $dist->name }}:
 
 {{$NEXT}}
+  [Security]
+  - The inode is no longer used for generated the ETag by default. (CVE-2026-111946)
+
   [Incompatabilities]
   - Minimum version is Perl v5.14.
 
@@ -8,6 +11,8 @@ Revision history for Perl extension {{ $dist->name }}:
   - Updated with new maintainer.
 
   - Added security policy.
+
+  - Documented the file_etag supported attributes.
 
   [Toolchain]
   - Static install.

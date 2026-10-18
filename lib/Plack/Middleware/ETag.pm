@@ -33,7 +33,7 @@ sub call {
 
             if ( Plack::Util::is_real_fh( $res->[2] ) ) {
 
-                my $file_attr = $self->file_etag || [qw/inode mtime size/];
+                my $file_attr = $self->file_etag || [qw/mtime size/];
                 my @stats = stat $res->[2];
                 if ( $stats[9] == time - 1 ) {
                     # if the file was modified less than one second before the request
@@ -90,7 +90,7 @@ __END__
   use Plack::Builder;
 
   my $app = builder {
-    enable "Plack::Middleware::ETag", file_etag => [qw/inode mtime size/];
+    enable "Plack::Middleware::ETag", file_etag => [qw/mtime size/];
     sub {['200', ['Content-Type' => 'text/html'}, ['hello world']]};
   };
 
@@ -100,15 +100,36 @@ Plack::Middleware::ETag adds automatically an ETag header. You may want to use i
 
   my $app = builder {
     enable "Plack::Middleware::ConditionalGET";
-    enable "Plack::Middleware::ETag", file_etag => "inode";
+    enable "Plack::Middleware::ETag", file_etag => [qw/mtime size/];
     sub {['200', ['Content-Type' => 'text/html'}, ['hello world']]};
   };
 
 =option file_etag
 
-If the content is a file handle, the ETag will be set using the inode, modified time and the file size. You can select which attributes of the file will be used to set the ETag:
+If the content is a file handle, the ETag will be set using the modified time and the file size.
+You can select which attributes of the file will be used to set the ETag:
 
     enable "Plack::Middleware::ETag", file_etag => [qw/size/];
+
+Supported attributes are
+
+=over
+
+=item mtime
+
+This is the file modification time.
+
+=item size
+
+This is the file size.
+
+=item inode
+
+This includes the inode number.
+
+It is no longer included by default since version 0.06, and is considered a potential security issue.
+
+=back
 
 =option cache_control
 

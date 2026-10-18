@@ -8,7 +8,7 @@ Plack::Middleware::ETag - Adds automatically an ETag header.
 use Plack::Builder;
 
 my $app = builder {
-  enable "Plack::Middleware::ETag", file_etag => [qw/inode mtime size/];
+  enable "Plack::Middleware::ETag", file_etag => [qw/mtime size/];
   sub {['200', ['Content-Type' => 'text/html'}, ['hello world']]};
 };
 ```
@@ -20,7 +20,7 @@ Plack::Middleware::ETag adds automatically an ETag header. You may want to use i
 ```perl
 my $app = builder {
   enable "Plack::Middleware::ConditionalGET";
-  enable "Plack::Middleware::ETag", file_etag => "inode";
+  enable "Plack::Middleware::ETag", file_etag => [qw/mtime size/];
   sub {['200', ['Content-Type' => 'text/html'}, ['hello world']]};
 };
 ```
@@ -29,11 +29,14 @@ my $app = builder {
 
 Changes for version 0.06 (2026-10-18)
 
+- Security
+    - The inode is no longer used for generated the ETag by default. (CVE-2026-111946)
 - Incompatabilities
     - Minimum version is Perl v5.14.
 - Documentation
     - Updated with new maintainer.
     - Added security policy.
+    - Documented the file\_etag supported attributes.
 - Toolchain
     - Static install.
     - Distributions signed with sigstore.
