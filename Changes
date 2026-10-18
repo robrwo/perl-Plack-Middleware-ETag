@@ -1,6 +1,8 @@
 Revision history for Perl extension {{ $dist->name }}:
 
 {{$NEXT}}
+
+0.06      2026-10-18 11:59:14+01:00 Europe/London
   [Security]
   - The inode is no longer used for generated the ETag by default. (CVE-2026-111946)
 

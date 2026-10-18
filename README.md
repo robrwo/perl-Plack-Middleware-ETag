@@ -25,27 +25,6 @@ my $app = builder {
 };
 ```
 
-# RECENT CHANGES
-
-Changes for version 0.06 (2026-10-18)
-
-- Security
-    - The inode is no longer used for generated the ETag by default. (CVE-2026-111946)
-    - Bump minimum version of Digest::SHA to 5.96.
-- Incompatabilities
-    - Minimum version is Perl v5.14.
-- Documentation
-    - Updated with new maintainer.
-    - Added security policy.
-    - Documented the file\_etag supported attributes.
-- Toolchain
-    - Static install.
-    - Distributions signed with sigstore.
-    - Note that the git repository and bugtracker have moved.
-    - Updated Dist::Zilla configuration for RRWO's preferences.
-
-See the `Changes` file for more details.
-
 # REQUIREMENTS
 
 This module lists the following modules as runtime dependencies:

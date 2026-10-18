@@ -12,7 +12,7 @@ use Plack::Util::Accessor
 
 use parent qw/Plack::Middleware/;
 
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 sub call {
     my $self = shift;
